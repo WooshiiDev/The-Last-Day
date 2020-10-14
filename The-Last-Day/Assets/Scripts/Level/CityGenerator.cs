@@ -59,7 +59,7 @@ namespace LastDay
         {
             for (int i = 0; i < 20; i++)
             {
-                Instantiate(data.npcs[Random.Range(0, data.npcs.Count)], NPCLocation(50), Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0)));
+                Instantiate(data.npcs[Random.Range(0, data.npcs.Count)], NPCLocation(50), Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0))).transform.SetParent(transform);
             }
         }
 

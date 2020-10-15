@@ -19,5 +19,7 @@ MonoBehaviour:
   - {fileID: 6488655738111550286, guid: 98349cb54f12f404d927b7e749d2c9a9, type: 3}
   - {fileID: 2995929855974611563, guid: 2a4e7ac18b5331d46823f49babe5d70e, type: 3}
   - {fileID: 1930112948584865236, guid: 9cfbfd84672bc954da2096a0c6765cbc, type: 3}
+  trees:
+  - {fileID: 2875825281846580279, guid: e50a08663d994eb4788205d053f6230d, type: 3}
   npcs:
   - {fileID: 6666509356215914555, guid: 752e2b92282fb0742bfb762fdae33b26, type: 3}

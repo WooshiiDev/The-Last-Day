@@ -1,0 +1,17 @@
+{
+    "name": "CameraDirector.Editor",
+    "references": [
+        "GUID:8d827d194900f4940b62dfb383634484"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

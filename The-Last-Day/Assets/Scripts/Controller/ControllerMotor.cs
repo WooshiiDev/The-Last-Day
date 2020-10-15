@@ -29,6 +29,7 @@ namespace LD
            entityAnimator = GetComponent<LastDay.EntityAnimator>();
 
             Input.AddClickListener (MoveToPoint);
+
             }
 
         private void Awake()
@@ -41,7 +42,11 @@ namespace LD
 
         public void Update()
             {
-            if (transform.hasChanged) OnMove();
+            effect.enabled = transform.hasChanged;
+
+            if (transform.hasChanged)
+                OnMove ();
+
             entityAnimator.SetAnimationBool("moving",Agent.remainingDistance >.4f);
             }
 

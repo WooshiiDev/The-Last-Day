@@ -25,6 +25,7 @@ namespace LD
             effect = GetComponentInChildren<VisualEffect> ();
 
             Input.AddClickListener (MoveToPoint);
+
             }
 
         private void Awake()
@@ -37,8 +38,11 @@ namespace LD
 
         public void Update()
             {
+            effect.enabled = transform.hasChanged;
+
             if (transform.hasChanged)
                 OnMove ();
+
             }
 
         /// <summary>

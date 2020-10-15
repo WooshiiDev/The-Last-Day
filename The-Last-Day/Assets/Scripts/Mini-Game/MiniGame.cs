@@ -30,7 +30,6 @@ namespace LastDay
         public void PrimeObjectives()
         {
             if (timeLimit > 0) { } // Set Time Limit
-            // Move Player to start location
             // Open Overlay
             if (objectives.Count <= 0) return;
             for (int i = 0; i < objectives.Count; i++)
@@ -82,7 +81,7 @@ namespace LastDay
                     objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.ReturnToNPC:
-                    objective.objectiveComplete.Invoke();
+                    if (Vector3.Distance(player.position, this.transform.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 default:
                     break;
@@ -91,7 +90,6 @@ namespace LastDay
 
         private void Win()
         {
-            // Move the player back to Npc
             // Close the overlay
             // Trigger Success Dialogue
             // Play Success Sound
@@ -102,7 +100,6 @@ namespace LastDay
 
         public void Lose()
         {
-            // Move the player back to Npc
             // Close the overlay
             // Trigger Failure Dialogue
             // Play Fail Sound

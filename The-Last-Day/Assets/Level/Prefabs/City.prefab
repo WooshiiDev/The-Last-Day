@@ -429,7 +429,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4d3fd7051f5b76e4ea3af1d1fd87b8d9, type: 2}
   size: 10
-  paddingX: 6
-  paddingY: 6
+  density: 3
+  paddingX: 6.5
+  paddingY: 6.5
   offsetDelta: 0
   rotationMax: 360
+  treeCount: 80
+  treeDistance: 100
+  characterCount: 30
+  characterDistance: 50

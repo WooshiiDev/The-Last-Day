@@ -16,3 +16,8 @@ MonoBehaviour:
   - {fileID: 8952149350176128716, guid: 0b6f7d5d9fd63754ba049fc762f2df22, type: 3}
   - {fileID: 6256917672985363857, guid: dafced553a0483f4baedfe3c574653af, type: 3}
   - {fileID: 3538440006206679349, guid: e8d8d0f499b181e44ab7064d233c0514, type: 3}
+  - {fileID: 6488655738111550286, guid: 98349cb54f12f404d927b7e749d2c9a9, type: 3}
+  - {fileID: 2995929855974611563, guid: 2a4e7ac18b5331d46823f49babe5d70e, type: 3}
+  - {fileID: 1930112948584865236, guid: 9cfbfd84672bc954da2096a0c6765cbc, type: 3}
+  npcs:
+  - {fileID: 6666509356215914555, guid: 752e2b92282fb0742bfb762fdae33b26, type: 3}

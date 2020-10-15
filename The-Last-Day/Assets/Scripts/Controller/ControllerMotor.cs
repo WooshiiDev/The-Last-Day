@@ -17,12 +17,16 @@ namespace LD
 
         private VisualEffect effect;
 
+        private LastDay.EntityAnimator entityAnimator;
+
         private void OnEnable()
             {
             Input = GetComponent<ControllerInput> ();
             Agent = GetComponent<NavMeshAgent> ();
 
             effect = GetComponentInChildren<VisualEffect> ();
+
+           entityAnimator = GetComponent<LastDay.EntityAnimator>();
 
             Input.AddClickListener (MoveToPoint);
 
@@ -43,6 +47,7 @@ namespace LD
             if (transform.hasChanged)
                 OnMove ();
 
+            entityAnimator.SetAnimationBool("moving",Agent.remainingDistance >.4f);
             }
 
         /// <summary>

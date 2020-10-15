@@ -9,6 +9,7 @@ namespace LastDay
     public class CityData : ScriptableObject
     {
         public List<GameObject> buildings = new List<GameObject>();
+        public List<GameObject> npcs = new List<GameObject>();
     }
 }
 

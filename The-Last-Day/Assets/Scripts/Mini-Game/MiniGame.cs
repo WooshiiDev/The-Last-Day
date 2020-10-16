@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 namespace LastDay
 {
-    public enum objectiveType { Puzzle, Waypoint, Collect, TalkToNPC, ReturnToNPC }
+    public enum objectiveType { Puzzle, Waypoint, Collect, TalkToNPC, ReturnToNPC}
     public class MiniGame : MonoBehaviour
     {
         public List<Objective> objectives = null;
@@ -30,6 +30,10 @@ namespace LastDay
             if (npc == null) npc = this.GetComponentInParent<NPC>();
             else
             {
+                if (GameManager.instance.GameOver)
+                {
+                    Destroy(this.gameObject);
+                }
                 if (GameManager.instance.currentMiniGame == this)
                 {
                     activeObjective = objectives[currentObjective];
@@ -174,7 +178,12 @@ namespace LastDay
             // Trigger Failure Dialogue
             // Play Fail Sound
             // Remove Karma
-            Debug.Log("Lose Mini-Game");
+            if (GameManager.instance.Score>0) GameManager.instance.AddScore(-100);
+            GameManager.instance.currentMiniGame = null;
+            if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
+            npc.DeactivateDeed();
+            numCollected = 0;
+            Destroy(this.gameObject);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -195,7 +204,7 @@ namespace LastDay
         public string goalText;
         [HideInInspector] public bool isCurrentObjective;
         public UnityEvent objectiveComplete;
-        public jigsawPuzzle puzzleOverlay;
+        public Puzzle puzzleOverlay;
         public Transform waypointToReach;
         public GameObject objectToCollect;
         public int numToCollect = 0;

@@ -14,6 +14,7 @@ namespace LastDay
             this.GetComponentInParent<MiniGame>().numCollected++;
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<MeshRenderer>().enabled = false;
+            this.GetComponentInChildren<UnityEngine.VFX.VisualEffect>().enabled =false;
         }
 
         private void OnTriggerEnter(Collider other)

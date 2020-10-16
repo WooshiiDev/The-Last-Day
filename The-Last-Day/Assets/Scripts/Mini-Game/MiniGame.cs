@@ -16,9 +16,12 @@ namespace LastDay
         [SerializeField] private Transform player = null;
         public NPC npc;
         public int numCollected = 0;
+        private AudioSource aSource;
+        public AudioClip win, lose;
 
         private void Start()
-        {          
+        {
+            aSource = this.GetComponent<AudioSource>();
             PrimeObjectives();
         }
         private void Update()
@@ -163,27 +166,31 @@ namespace LastDay
             // Trigger Success Dialogue
             // Play Success Sound
             // Add Karma
+            if (aSource.isPlaying == false)
+            {
+                aSource.PlayOneShot(win);
+            }
             GameManager.instance.AddScore(100);
             Debug.Log("Win Mini-Game");
             GameManager.instance.currentMiniGame = null;
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
             npc.DeactivateDeed();
             numCollected = 0;
-            Destroy(this.gameObject);
+            Destroy(this.gameObject,win.length);
         }
 
         public void Lose()
         {
-            // Close the overlay
-            // Trigger Failure Dialogue
-            // Play Fail Sound
-            // Remove Karma
-            if (GameManager.instance.Score>0) GameManager.instance.AddScore(-100);
             GameManager.instance.currentMiniGame = null;
+            GameManager.instance.AddScore(-100);
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
             npc.DeactivateDeed();
             numCollected = 0;
-            Destroy(this.gameObject);
+            if (aSource.isPlaying == false)
+            {
+                aSource.PlayOneShot(lose);
+            }
+            Destroy(this.gameObject,lose.length);
         }
 
         private void OnTriggerEnter(Collider other)

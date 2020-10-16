@@ -13,6 +13,7 @@ namespace LastDay
         [SerializeField] private Sprite [] catSprites = null;
         private Timer timeTillCatFalls;
         public Timer timeTillCatFallsAnyway;
+        public bool end;
 
         // Update is called once per frame
         private void Start()
@@ -41,9 +42,10 @@ namespace LastDay
 
             if (catFalling)
             {
-                if (timeTillCatFalls.IsFinished)
+                if (timeTillCatFalls.IsFinished && !end)
                 {
                     miniGame.Lose();
+                    end = true;
                 }
                 else
                 {
@@ -58,9 +60,11 @@ namespace LastDay
         }
         public void catchCat()
         {
-            if (catFalling == true)
+            if (catFalling == true && !end)
             {
                 miniGame.NextObjective();
+                end = true;
+                this.gameObject.SetActive(false);             
             }
         }
 

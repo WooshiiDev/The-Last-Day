@@ -64,6 +64,7 @@ namespace LastDay
 
         private void Update()
         {
+            if (Score < 0) Score = 0;
             // Update timer
             WorldTimer.UpdateTimer(Time.deltaTime);
 

@@ -68,7 +68,7 @@ namespace LastDay
             if (Score < 0) Score = 0;
             // Update timer
             WorldTimer.UpdateTimer(Time.deltaTime);
-            City.GetComponent<AudioSource>().volume = GameOver ? 0 : 0.2f;
+            City.GetComponent<AudioSource>().volume = GameOver ? 0 : 0.1f;
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {

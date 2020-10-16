@@ -14,6 +14,7 @@ namespace LastDay
         private Timer timeTillCatFalls;
         public Timer timeTillCatFallsAnyway;
         public bool end;
+        [SerializeField] private TMPro.TextMeshProUGUI helpText;
 
         // Update is called once per frame
         private void Start()
@@ -23,6 +24,7 @@ namespace LastDay
         }
         void Update()
         {
+            helpText.text = catFalling ? "Catch the Cat" : "Tap the tree";
             if (timeTillCatFallsAnyway.IsFinished)
             {
                 catFalling = true;

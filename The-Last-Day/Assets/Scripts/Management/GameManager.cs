@@ -65,6 +65,7 @@ namespace LastDay
 
         private void Update()
         {
+            if (currentMiniGame == null) Player.GetComponent<LD.ControllerMotor>().canMove = true;
             if (Score < 0) Score = 0;
             // Update timer
             WorldTimer.UpdateTimer(Time.deltaTime);

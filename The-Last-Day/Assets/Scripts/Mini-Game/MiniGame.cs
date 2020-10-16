@@ -9,11 +9,12 @@ namespace LastDay
     public enum objectiveType { Puzzle, Waypoint, Collect, TalkToNPC, ReturnToNPC }
     public class MiniGame : MonoBehaviour
     {
-        [SerializeField] private List<Objective> objectives = null;
+        public List<Objective> objectives = null;
         [SerializeField] private float timeLimit = 0f;
-        private bool isGameActive;
         private int currentObjective = 0;
+        public Objective activeObjective;
         [SerializeField] private Transform player = null;
+        public NPC npc;
 
         private void Start()
         {          
@@ -23,16 +24,31 @@ namespace LastDay
         {
             if (player == null)
             {
-                player = GameManager.instance.Player.transform;
+                if (GameManager.instance.Player!=null) player = GameManager.instance.Player.transform;
             }
-            if (isGameActive)
+            if (npc == null) npc = this.GetComponentInParent<NPC>();
+            else
             {
-                UpdateTimeLimit();
-                CheckObjectiveGoal(objectives[currentObjective]);
+                if (GameManager.instance.currentMiniGame == this)
+                {
+                    activeObjective = objectives[currentObjective];
+                    UpdateTimeLimit();
+                    CheckObjectiveGoal(objectives[currentObjective]);
+                }
             }
         }
         public void PrimeObjectives()
         {
+            npc = this.GetComponentInParent<NPC>();
+            if (GameManager.instance.currentDeeds < GameManager.instance.maxDeeds)
+            {
+                // Add deed to game
+                GameManager.instance.currentDeeds++;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
             if (timeLimit > 0) { } // Set Time Limit
             // Open Overlay
             if (objectives.Count <= 0) return;
@@ -44,8 +60,8 @@ namespace LastDay
                 });
                 objectives[i].isCurrentObjective = false;
             }
-            objectives[0].isCurrentObjective = true;
-            isGameActive = true;
+            objectives[0].isCurrentObjective = true;           
+            SpawnNextObjective(objectives[currentObjective]);
         }
         void UpdateTimeLimit()
         { 
@@ -65,8 +81,38 @@ namespace LastDay
             {
                 objectives[i].isCurrentObjective = false;
             }
+            SpawnNextObjective(objectives[currentObjective]);
             objectives[currentObjective].isCurrentObjective = true;
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
+        }
+
+        private void SpawnNextObjective(Objective objective)
+        {
+            switch (objective.goal)
+            {
+                case objectiveType.Puzzle:
+                    break;
+                case objectiveType.Waypoint:
+                    objective.goalText = $"Go to {objective.waypointToReach.gameObject.name}";
+                    break;
+                case objectiveType.Collect:
+                    objective.goalText = $"Collect {objective.numToCollect} {objective.objectToCollect.gameObject.name}";
+                    objective.objectsToCollect = new GameObject[objective.numToCollect];
+                    for (int i = 0; i < objective.numToCollect; i++)
+                    {
+                        GameObject collectObject = Instantiate(objective.objectToCollect, CityGenerator.NavMeshLocation(20, transform), Quaternion.identity);
+                        objective.objectsToCollect[i] = collectObject;
+                    }
+                    break;
+                case objectiveType.TalkToNPC:
+                    objective.goalText = $"Talk to {npc.gameObject.name}";
+                    break;
+                case objectiveType.ReturnToNPC:
+                    objective.goalText = $"Return to {npc.gameObject.name}";
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void CheckObjectiveGoal(Objective objective)
@@ -82,10 +128,18 @@ namespace LastDay
                     if (Vector3.Distance(player.position,objective.waypointToReach.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.Collect:
+                    if (objective.objectsToCollect.Length > 0)
+                    {
+                        for (int i = 0; i < objective.objectsToCollect.Length; i++)
+                        {
+                            if (objective.objectsToCollect[i].GetComponent<Collectable>().isCollected == false) return;
+                            if (i == objective.numToCollect) objective.objectiveComplete.Invoke();
+                        }
+                    }
                     objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.TalkToNPC:
-                    if (Vector3.Distance(player.position, objective.npcToTalkTo.gameObject.transform.position) < 2f) objective.objectiveComplete.Invoke();
+                    if (Vector3.Distance(player.position, npc.gameObject.transform.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.ReturnToNPC:
                     if (Vector3.Distance(player.position, this.transform.position) < 2f) objective.objectiveComplete.Invoke();
@@ -103,8 +157,10 @@ namespace LastDay
             // Add Karma
             GameManager.instance.AddScore(100);
             Debug.Log("Win Mini-Game");
-            isGameActive = false;
+            GameManager.instance.currentMiniGame = null;
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
+            npc.DeactivateDeed();
+            Destroy(this.gameObject);
         }
 
         public void Lose()
@@ -114,19 +170,30 @@ namespace LastDay
             // Play Fail Sound
             // Remove Karma
             Debug.Log("Lose Mini-Game");
-            isGameActive = false;
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                if (GameManager.instance.currentMiniGame == null)
+                {
+                    GameManager.instance.currentMiniGame = this;
+                }
+            }
+        }
     }
     [Serializable]
     public class Objective
     {
         public objectiveType goal;
+        public string goalText;
         [HideInInspector] public bool isCurrentObjective;
         public UnityEvent objectiveComplete;
         public jigsawPuzzle puzzleOverlay;
         public Transform waypointToReach;
-        public GameObject[] objectsToCollect;
-        public NPC npcToTalkTo;
+        public GameObject objectToCollect;
+        public int numToCollect = 0;
+        [HideInInspector] public GameObject[] objectsToCollect;
     }
 }

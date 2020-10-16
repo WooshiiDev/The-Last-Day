@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Permissions;
 using UnityEngine;
@@ -48,19 +49,19 @@ namespace LastDay
                 for (int y = -size; y < size; y++)
                 {
                     // Chance to spawn a building
-                    int i = Random.Range(0, density);
+                    int i = UnityEngine.Random.Range(0, density);
 
                     if (i > 0)
                     {
                         // Translate the buildings from their position
                         Vector3 offset = Vector3.forward + Vector3.right;
-                        offset.x *= Random.Range(-offsetDelta, offsetDelta);
-                        offset.z *= Random.Range(-offsetDelta, offsetDelta);
+                        offset.x *= UnityEngine.Random.Range(-offsetDelta, offsetDelta);
+                        offset.z *= UnityEngine.Random.Range(-offsetDelta, offsetDelta);
 
                         // Distance the buildings from each other and add offset
                         Vector3 location = new Vector3(x * paddingX, 0, y * paddingY) + offset;
                         // Randomise rotation
-                        Quaternion rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, rotationMax), 0));
+                        Quaternion rotation = Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, rotationMax), 0));
 
                         // Spawn the building
                         GameObject building = Instantiate(SelectRandom(data.buildings), location, rotation);
@@ -75,7 +76,7 @@ namespace LastDay
         // Choose a random object from a list
         public GameObject SelectRandom(List<GameObject> objects)
         {
-            int index = Random.Range(0, objects.Count);
+            int index = UnityEngine.Random.Range(0, objects.Count);
             return objects[index];
         }
 
@@ -84,16 +85,18 @@ namespace LastDay
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject obj = Instantiate(SelectRandom(objects), NavMeshLocation(distance, transform), Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0)));
-                if (randomiseScale) obj.transform.localScale *= Random.Range(0.5f, 1.5f);
+                GameObject placeholderObject = SelectRandom(objects);
+                GameObject obj = Instantiate(placeholderObject, NavMeshLocation(distance, transform), Quaternion.Euler(new Vector3(0, UnityEngine.Random.Range(0, 360), 0)));
+                if (randomiseScale) obj.transform.localScale *= UnityEngine.Random.Range(0.5f, 1.5f);
                 obj.transform.SetParent(transform);
+                obj.name = placeholderObject.name;
             }
         }
 
         // Find a random location in the area using the navmesh
         public static Vector3 NavMeshLocation(float radius, Transform contextTransform)
         {
-            Vector3 randomDirection = Random.insideUnitSphere * radius;
+            Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * radius;
             randomDirection += contextTransform.position;
             Vector3 finalPosition = Vector3.zero;
             if (NavMesh.SamplePosition(randomDirection, out NavMeshHit hit, radius, 1))

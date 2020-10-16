@@ -8,7 +8,7 @@ namespace LastDay
 {
     public class UserInterfaceManager : MonoBehaviour
     {
-        public TextMeshProUGUI timerDisplay, scoreDisplay;
+        public TextMeshProUGUI timerDisplay, scoreDisplay,objectiveDisplay;
         public Image endFadeImage;
         private GameManager game;
 
@@ -24,6 +24,7 @@ namespace LastDay
             timerDisplay.text = game.WorldTimer.GetTime();
             // Get and display score
             scoreDisplay.text = game.Score.ToString();
+            objectiveDisplay.text = game.ObjectiveText;
 
             if (game.WorldTimer.CurrentTime <= 5)
                 StartCoroutine(EndFade(0.2f));

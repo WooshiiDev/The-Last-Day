@@ -8,6 +8,7 @@ namespace LastDay
     {
         private GameManager game;
         [SerializeField] private GameObject deedMarker = null;
+        public GameObject miniGame;
         public bool HasDeed { get; private set; }
 
         private void Start()
@@ -28,9 +29,10 @@ namespace LastDay
             if (game.mainCam != null) deedMarker.transform.LookAt(game.mainCam.transform); 
         }
 
-        public void ActivateDeed()
+        public void GenerateDeed(GameObject randomMiniGame)
         {
             HasDeed = true;
+            Instantiate(randomMiniGame, this.gameObject.transform);
         }
 
         public void DeactivateDeed()

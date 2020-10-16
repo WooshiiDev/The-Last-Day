@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace LastDay
 {
@@ -17,13 +16,21 @@ namespace LastDay
         [SerializeField] private GameObject playerPrefab = null;
         [SerializeField] private AudioClip eruptionClip = null;
 
+        public MiniGame currentMiniGame = null;
+
+
         public AudioSource Audio { get; private set; }
         public GameObject City { get; private set; }
         public GameObject Player { get; private set; }
         public Countdown WorldTimer { get; private set; }
+
         public int Score { get; private set; }
 
+        public string ObjectiveText { get; private set; }
+
         public Director.CameraFreeLook mainCam;
+
+        private CityGenerator cityGen;
 
         private void Start()
         {
@@ -50,6 +57,7 @@ namespace LastDay
             // Set the camera target as the player
             mainCam.SetFollowTarget(Player.transform);
             mainCam.SetLookAtTarget(Player.transform);
+            if (cityGen == null) cityGen = FindObjectOfType<CityGenerator>();
         }
 
         private void Update()
@@ -71,9 +79,28 @@ namespace LastDay
 
             // Activate a deed for a number of random NPCs
             if (CityGenerator.Generated && currentDeeds < maxDeeds)
+            {  
+                if (cityGen != null)
+                {
+                    GameObject randomMiniGame = cityGen.data.minigames[Random.Range(0, cityGen.data.minigames.Count)];
+                    // Check if its a collectable one
+                    Debug.Log(cityGen.data.minigames[0]);
+                    if (randomMiniGame == cityGen.data.minigames[0])
+                    {
+                        randomMiniGame.GetComponent<MiniGame>().objectives[1].objectToCollect = cityGen.data.collectableObjects[Random.Range(0, cityGen.data.collectableObjects.Count)];
+                        randomMiniGame.GetComponent<MiniGame>().objectives[1].numToCollect = Random.Range(1, 7);
+                    }
+                    npcs[Random.Range(0, npcs.Count)].GenerateDeed(randomMiniGame);
+                }
+            }
+
+            if (currentMiniGame != null)
             {
-                npcs[Random.Range(0, npcs.Count)].ActivateDeed();
-                currentDeeds++;
+                ObjectiveText = currentMiniGame.activeObjective.goalText;
+            }
+            else
+            {
+                ObjectiveText = "Find a citzen to start a good deed";
             }
         }
 

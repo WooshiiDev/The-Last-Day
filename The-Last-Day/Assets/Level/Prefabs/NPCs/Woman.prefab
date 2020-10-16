@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deedMarker: {fileID: 2934731657412395215}
   miniGame: {fileID: 0}
+  portraitImage: {fileID: 4638217557745688104, guid: 5915565c71f18ae4ba8d58b4b5a0476d, type: 3}
 --- !u!1 &2934731657412395215
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3522028036854913112}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: e70013af1abfb764582baac4977d3f9f, type: 3}
+  m_Avatar: {fileID: 9000000, guid: a4fe9b32bb2f51942baaa9b9b1dccb33, type: 3}
   m_Controller: {fileID: 9100000, guid: cd155d95416b9af4096d85d3b37d7366, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0

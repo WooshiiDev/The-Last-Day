@@ -122,6 +122,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1118709680749446601, guid: 752e2b92282fb0742bfb762fdae33b26, type: 3}
+      propertyPath: portraitImage
+      value: 
+      objectReference: {fileID: -5357300070090098781, guid: 5915565c71f18ae4ba8d58b4b5a0476d, type: 3}
     - target: {fileID: 3816855513361470081, guid: 752e2b92282fb0742bfb762fdae33b26, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

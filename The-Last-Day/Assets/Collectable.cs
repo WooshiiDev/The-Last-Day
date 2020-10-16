@@ -11,6 +11,7 @@ namespace LastDay
         public void Collect()
         {
             isCollected = true;
+            this.GetComponentInParent<MiniGame>().numCollected++;
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<MeshRenderer>().enabled = false;
         }

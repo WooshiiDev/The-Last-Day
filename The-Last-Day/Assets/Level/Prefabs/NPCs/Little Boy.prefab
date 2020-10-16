@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deedMarker: {fileID: 1090627655096279698}
   miniGame: {fileID: 0}
+  portraitImage: {fileID: 5223210709164484199, guid: 5915565c71f18ae4ba8d58b4b5a0476d, type: 3}
 --- !u!1 &5431570166131644251
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,9 +11,12 @@ namespace LastDay
         public TextMeshProUGUI timerDisplay, scoreDisplay,objectiveDisplay;
         public Image endFadeImage;
         private GameManager game;
+        public Image characterPortraitImage;
+        private Sprite defaultImage;
 
         private void Start()
         {
+            defaultImage = characterPortraitImage.sprite;
             game = GameManager.instance;
         }
 
@@ -25,6 +28,8 @@ namespace LastDay
             // Get and display score
             scoreDisplay.text = game.Score.ToString();
             objectiveDisplay.text = game.ObjectiveText;
+            if (game.currentMiniGame == null) characterPortraitImage.sprite = defaultImage;
+            else characterPortraitImage.sprite = game.currentMiniGame.npc.portraitImage;
 
             if (game.WorldTimer.CurrentTime <= 5)
                 StartCoroutine(EndFade(0.2f));

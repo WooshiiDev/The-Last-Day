@@ -83,8 +83,7 @@ namespace LastDay
                 if (cityGen != null)
                 {
                     GameObject randomMiniGame = cityGen.data.minigames[Random.Range(0, cityGen.data.minigames.Count)];
-                    // Check if its a collectable one
-                    Debug.Log(cityGen.data.minigames[0]);
+                    // Check if its a collectable mini-game
                     if (randomMiniGame == cityGen.data.minigames[0])
                     {
                         randomMiniGame.GetComponent<MiniGame>().objectives[1].objectToCollect = cityGen.data.collectableObjects[Random.Range(0, cityGen.data.collectableObjects.Count)];
@@ -100,7 +99,7 @@ namespace LastDay
             }
             else
             {
-                ObjectiveText = "Find a citzen to start a good deed";
+                ObjectiveText = "Find a citzen<color=purple> in need </color>to start a <color=green>good deed</color>";
             }
         }
 

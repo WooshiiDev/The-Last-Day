@@ -9,6 +9,7 @@ namespace LastDay
         private GameManager game;
         [SerializeField] private GameObject deedMarker = null;
         public GameObject miniGame;
+        public Sprite portraitImage;
         public bool HasDeed { get; private set; }
 
         private void Start()

@@ -15,6 +15,7 @@ namespace LastDay
         public Objective activeObjective;
         [SerializeField] private Transform player = null;
         public NPC npc;
+        public int numCollected = 0;
 
         private void Start()
         {          
@@ -84,6 +85,7 @@ namespace LastDay
             SpawnNextObjective(objectives[currentObjective]);
             objectives[currentObjective].isCurrentObjective = true;
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
+            numCollected = 0;
         }
 
         private void SpawnNextObjective(Objective objective)
@@ -96,7 +98,7 @@ namespace LastDay
                     objective.goalText = $"Go to {objective.waypointToReach.gameObject.name}";
                     break;
                 case objectiveType.Collect:
-                    objective.goalText = $"Collect {objective.numToCollect} {objective.objectToCollect.gameObject.name}";
+                    objective.goalText = $"Collect {objective.numToCollect} {objective.objectToCollect.gameObject.name}s";
                     objective.objectsToCollect = new GameObject[objective.numToCollect];
                     for (int i = 0; i < objective.numToCollect; i++)
                     {
@@ -128,8 +130,10 @@ namespace LastDay
                     if (Vector3.Distance(player.position,objective.waypointToReach.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.Collect:
+                    
                     if (objective.objectsToCollect.Length > 0)
                     {
+                        activeObjective.goalText = $"Collect {numCollected} / {objective.numToCollect} {objective.objectToCollect.gameObject.name}s";
                         for (int i = 0; i < objective.objectsToCollect.Length; i++)
                         {
                             if (objective.objectsToCollect[i].GetComponent<Collectable>().isCollected == false) return;
@@ -160,6 +164,7 @@ namespace LastDay
             GameManager.instance.currentMiniGame = null;
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
             npc.DeactivateDeed();
+            numCollected = 0;
             Destroy(this.gameObject);
         }
 

@@ -257,10 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miniGame: {fileID: 0}
   cat: {fileID: 4177024395397806964}
-  catSprites:
-  - {fileID: 9172026736310497242, guid: efbd09efe0953d9428643b802a29e544, type: 3}
-  - {fileID: -8947808907177094094, guid: efbd09efe0953d9428643b802a29e544, type: 3}
-  - {fileID: 4982823742894517925, guid: efbd09efe0953d9428643b802a29e544, type: 3}
+  catFallSprite: {fileID: 21300000, guid: 142571adf269af548bbdbb0f8732fad7, type: 3}
   timeTillCatFallsAnyway:
     startTime: 0
     endTime: 0
@@ -268,6 +265,7 @@ MonoBehaviour:
     onFinish:
       m_PersistentCalls:
         m_Calls: []
+  end: 0
 --- !u!1 &4177024395397806964
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,17 +293,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4177024395397806964}
-  m_LocalRotation: {x: -0, y: -0, z: -0.2059962, w: 0.9785528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7452235041134807150}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -23.776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 248, y: 277.56}
-  m_SizeDelta: {x: 300, y: 400}
+  m_AnchoredPosition: {x: 255.5, y: 264}
+  m_SizeDelta: {x: 532, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4665705449174327578
 CanvasRenderer:
@@ -335,7 +333,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 9172026736310497242, guid: efbd09efe0953d9428643b802a29e544, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 442bf82aaa5e36943a187571ac1ad9f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

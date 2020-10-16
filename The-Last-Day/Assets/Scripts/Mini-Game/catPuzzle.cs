@@ -10,15 +10,14 @@ namespace LastDay
         private int numOfClicks = 0;
         private bool catFalling;
         [SerializeField] private GameObject cat = null;
-        [SerializeField] private Sprite [] catSprites = null;
+        [SerializeField] private Sprite catFallSprite;
         private Timer timeTillCatFalls;
         public Timer timeTillCatFallsAnyway;
         public bool end;
 
         // Update is called once per frame
         private void Start()
-        {
-            cat.GetComponent<Image>().sprite = catSprites[Random.Range(0, catSprites.Length - 1)];
+        {           
             timeTillCatFalls = new Timer(3.4f);
             timeTillCatFallsAnyway = new Timer(7f);
         }
@@ -27,6 +26,7 @@ namespace LastDay
             if (timeTillCatFallsAnyway.IsFinished)
             {
                 catFalling = true;
+                cat.GetComponent<Image>().sprite = catFallSprite;
                 cat.GetComponent<Rigidbody2D>().gravityScale = 10;
             }
             else
@@ -37,6 +37,7 @@ namespace LastDay
             if (numOfClicks >=4)
             {
                 catFalling = true;
+                cat.GetComponent<Image>().sprite = catFallSprite;
                 cat.GetComponent<Rigidbody2D>().gravityScale = 10;
             }
 

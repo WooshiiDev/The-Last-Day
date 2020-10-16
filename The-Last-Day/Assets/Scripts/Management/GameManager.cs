@@ -67,6 +67,7 @@ namespace LastDay
             if (Score < 0) Score = 0;
             // Update timer
             WorldTimer.UpdateTimer(Time.deltaTime);
+            City.GetComponent<AudioSource>().volume = GameOver ? 0 : 0.2f;
 
             // Play volcano explosion sound
             if (!Audio.isPlaying && WorldTimer.CurrentTime <= 10)
@@ -103,7 +104,7 @@ namespace LastDay
             }
             else
             {
-                ObjectiveText = "Find a citzen<color=purple> in need </color>to start a <color=green>good deed</color>";
+                ObjectiveText = "Find a citizen<color=purple> in need </color>to start a <color=green>good deed</color>";
             }
         }
 

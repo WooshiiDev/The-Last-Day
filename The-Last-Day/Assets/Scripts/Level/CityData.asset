@@ -31,5 +31,5 @@ MonoBehaviour:
   - {fileID: 750213661035471094, guid: 8fc175d7c39e52b4eae94b7751c3041a, type: 3}
   - {fileID: 3177507478559545318, guid: 24b35ab06b1d67d498a298043aa65d4e, type: 3}
   collectableObjects:
-  - {fileID: 7534894337184994309, guid: 5ecfdec1c4b9ac848b01c18472f51a23, type: 3}
-  - {fileID: 7534894337184994309, guid: edbec92860ba5ce41bac8c1d58d28073, type: 3}
+  - {fileID: 217397555052840871, guid: 66c7b4d9a92891d48aa4243e8da725c9, type: 3}
+  - {fileID: 399298905565726094, guid: 5ffb173fc6e69b341b704e9c23ef6dee, type: 3}

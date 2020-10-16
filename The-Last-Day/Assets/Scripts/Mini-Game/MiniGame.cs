@@ -150,9 +150,11 @@ namespace LastDay
                     objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.TalkToNPC:
+                    npc.inProgress.SetActive(true);
                     if (Vector3.Distance(player.position, npc.gameObject.transform.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.ReturnToNPC:
+                    npc.inProgress.SetActive(true);
                     if (Vector3.Distance(player.position, this.transform.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 default:
@@ -176,6 +178,7 @@ namespace LastDay
             if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
             npc.DeactivateDeed();
             numCollected = 0;
+            npc.inProgress.SetActive(false);
             Destroy(this.gameObject,win.length);
         }
 
@@ -190,6 +193,7 @@ namespace LastDay
             {
                 aSource.PlayOneShot(lose);
             }
+            npc.inProgress.SetActive(false);
             Destroy(this.gameObject,lose.length);
         }
 

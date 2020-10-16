@@ -365,6 +365,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8586829856230673894, guid: 7b41bf9ef8168c44d980f873e1afb78c, type: 3}
+      propertyPath: m_text
+      value: Find a citizen<color=purple> in need </color>to start a <color=green>good
+        deed</color>
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b41bf9ef8168c44d980f873e1afb78c, type: 3}
 --- !u!4 &1091968796 stripped
@@ -962,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 751648652}
     - target: {fileID: 155845406087817759, guid: b849b015f3cb00d43a2f4ed744ea3ce1, type: 3}
       propertyPath: timeTillGameOver
-      value: 120
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 155845406087817759, guid: b849b015f3cb00d43a2f4ed744ea3ce1, type: 3}
       propertyPath: maxDeeds

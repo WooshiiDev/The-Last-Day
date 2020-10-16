@@ -8,18 +8,22 @@ namespace LastDay
         [SerializeField] private GameObject deedMarker = null;
         public GameObject miniGame;
         public Sprite portraitImage;
+        private EntityAnimator anim;
+        public GameObject inProgress;
         public bool HasDeed { get; private set; }
 
         private void Start()
         {
             game = GameManager.instance;
             game.npcs.Add(this);
+            anim = this.GetComponent<EntityAnimator>();
         }
 
         private void Update()
         {
             // Display if a deed is available
             deedMarker.SetActive(HasDeed);
+            anim.SetAnimationBool("hasDeed", HasDeed);
         }
 
         private void LateUpdate()

@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class jigsawPuzzle : MonoBehaviour
+namespace LastDay
 {
-    [SerializeField] jigSawSlot[] jigSawSlots;
-    [SerializeField] LastDay.MiniGame miniGame;
-    void Update()
+    public class jigsawPuzzle : MonoBehaviour
     {
-        for (int i = 0; i < jigSawSlots.Length -1; i++)
+        [SerializeField] jigSawSlot[] jigSawSlots = null;
+        public MiniGame miniGame = null;
+        void Update()
         {
-            if (jigSawSlots[i].assignedPiece == null) return;
-            if (jigSawSlots[i].assignedPiece.pieceNum != jigSawSlots[i].slotNum) return;
-            Debug.Log($"{i} SUCCESS");
-            if (i == jigSawSlots.Length - 2)
+            for (int i = 0; i < jigSawSlots.Length - 1; i++)
             {
-                miniGame.NextObjective();
-                this.gameObject.SetActive(false);
+                if (jigSawSlots[i].assignedPiece == null) return;
+                if (jigSawSlots[i].assignedPiece.pieceNum != jigSawSlots[i].slotNum) return;
+                Debug.Log($"{i} SUCCESS");
+                if (i == jigSawSlots.Length - 2)
+                {
+                    miniGame.NextObjective();
+                    this.gameObject.SetActive(false);
+                }
             }
         }
-    }
+    } 
 }

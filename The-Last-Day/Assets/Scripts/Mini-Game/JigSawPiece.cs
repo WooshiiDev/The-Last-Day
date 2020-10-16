@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class JigSawPiece : Draggable
+﻿
+namespace LastDay
 {
-    public int pieceNum;
-    public jigSawSlot assignedSlot;
+    public class JigSawPiece : Draggable
+    {
+        public int pieceNum = 0;
+        public jigSawSlot assignedSlot = null;
+    } 
 }

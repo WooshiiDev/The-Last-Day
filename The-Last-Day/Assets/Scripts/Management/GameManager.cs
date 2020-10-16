@@ -21,6 +21,8 @@ namespace LastDay
         public GameObject Player { get; private set; }
         public Countdown WorldTimer { get; private set; }
 
+        public Director.CameraFreeLook mainCam;
+
         private void Start()
         {
             instance = this;
@@ -42,6 +44,10 @@ namespace LastDay
 
             // Spawn the player
             if (playerPrefab) Player = Instantiate(playerPrefab, CityGenerator.NavMeshLocation(10, transform), Quaternion.identity);
+
+            // Set the camera target as the player
+            mainCam.SetFollowTarget(Player.transform);
+            mainCam.SetLookAtTarget(Player.transform);
         }
 
         private void Update()

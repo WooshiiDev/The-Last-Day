@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class jigSawSlot : MonoBehaviour,IDropHandler
+namespace LastDay
 {
-    public int slotNum;
-    public JigSawPiece assignedPiece;
-
-    public void OnDrop(PointerEventData eventData)
+    public class jigSawSlot : MonoBehaviour, IDropHandler
     {
+        public int slotNum = 0;
+        public JigSawPiece assignedPiece = null;
 
-        Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-        if (d != null)
+        public void OnDrop(PointerEventData eventData)
         {
-            d.GetComponent<RectTransform>().position = this.GetComponent<RectTransform>().position;
-            assignedPiece = d.GetComponent<JigSawPiece>();
+
+            Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
+            if (d != null)
+            {
+                d.GetComponent<RectTransform>().position = this.GetComponent<RectTransform>().position;
+                assignedPiece = d.GetComponent<JigSawPiece>();
+            }
         }
-    }
+    } 
 }

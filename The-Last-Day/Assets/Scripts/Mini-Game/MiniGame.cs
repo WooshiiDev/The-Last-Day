@@ -9,18 +9,22 @@ namespace LastDay
     public enum objectiveType { Puzzle, Waypoint, Collect, TalkToNPC, ReturnToNPC }
     public class MiniGame : MonoBehaviour
     {
-        [SerializeField] private List<Objective> objectives;
-        [SerializeField] private float timeLimit;
+        [SerializeField] private List<Objective> objectives = null;
+        [SerializeField] private float timeLimit = 0f;
         private bool isGameActive;
-        private int currentObjective;
-        [SerializeField] private Transform player;
+        private int currentObjective = 0;
+        [SerializeField] private Transform player = null;
 
         private void Start()
-        {
+        {          
             PrimeObjectives();
         }
         private void Update()
         {
+            if (player == null)
+            {
+                player = GameManager.instance.Player.transform;
+            }
             if (isGameActive)
             {
                 UpdateTimeLimit();
@@ -69,7 +73,8 @@ namespace LastDay
             switch (objective.goal)
             {
                 case objectiveType.Puzzle:
-                    objective.puzzleOverlay.SetActive(true);
+                    objective.puzzleOverlay.gameObject.SetActive(true);
+                    objective.puzzleOverlay.miniGame = this;
                     break;
                 case objectiveType.Waypoint:
                     if (Vector3.Distance(player.position,objective.waypointToReach.position) < 2f) objective.objectiveComplete.Invoke();
@@ -78,7 +83,7 @@ namespace LastDay
                     objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.TalkToNPC:
-                    objective.objectiveComplete.Invoke();
+                    if (Vector3.Distance(player.position, objective.npcToTalkTo.gameObject.transform.position) < 2f) objective.objectiveComplete.Invoke();
                     break;
                 case objectiveType.ReturnToNPC:
                     if (Vector3.Distance(player.position, this.transform.position) < 2f) objective.objectiveComplete.Invoke();
@@ -94,6 +99,7 @@ namespace LastDay
             // Trigger Success Dialogue
             // Play Success Sound
             // Add Karma
+            //GameManager.instance.
             Debug.Log("Win Mini-Game");
             isGameActive = false;
         }
@@ -115,9 +121,9 @@ namespace LastDay
         public objectiveType goal;
         [HideInInspector] public bool isCurrentObjective;
         public UnityEvent objectiveComplete;
-        public GameObject puzzleOverlay;
+        public jigsawPuzzle puzzleOverlay;
         public Transform waypointToReach;
         public GameObject[] objectsToCollect;
-        public GameObject npcToTalkTo;
+        public NPC npcToTalkTo;
     }
 }

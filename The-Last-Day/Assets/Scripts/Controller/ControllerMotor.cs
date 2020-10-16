@@ -17,6 +17,8 @@ namespace LD
 
         private VisualEffect effect;
 
+        private VisualEffect moveEffect;
+
         private LastDay.EntityAnimator entityAnimator;
 
         private void OnEnable()
@@ -59,7 +61,13 @@ namespace LD
             Ray ray = Camera.main.ScreenPointToRay (mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit))
-                Agent.SetDestination (hit.point);
+            {
+                Agent.SetDestination(hit.point);
+                // Spawn Visual Effect to indicate move location
+                if (moveEffect == null) moveEffect = Instantiate(effect, hit.point, Quaternion.identity);
+                else moveEffect.transform.position = hit.point;
+            }
+                
             }
 
         public void OnMove()

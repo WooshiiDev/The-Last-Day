@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 2875825281846580279, guid: e50a08663d994eb4788205d053f6230d, type: 3}
   npcs:
   - {fileID: 6666509356215914555, guid: 752e2b92282fb0742bfb762fdae33b26, type: 3}
+  - {fileID: 4193087311670477015, guid: b46b12b4682fb6c4cb130693537abecc, type: 3}

@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a00f0ca871e04342b0f3459f7e35efd, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a00f0ca871e04342b0f3459f7e35efd, type: 3}
 --- !u!1001 &3387049486082897526
@@ -79,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 2169090149963079491, guid: f049275b7e1a30b499940a102ff776d2, type: 3}
       propertyPath: m_Name
       value: House 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2169090149963079491, guid: f049275b7e1a30b499940a102ff776d2, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4123753047872738501, guid: f049275b7e1a30b499940a102ff776d2, type: 3}
       propertyPath: m_LocalPosition.x

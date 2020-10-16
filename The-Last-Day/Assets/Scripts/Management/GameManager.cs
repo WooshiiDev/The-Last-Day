@@ -23,6 +23,7 @@ namespace LastDay
         public GameObject City { get; private set; }
         public GameObject Player { get; private set; }
         public Countdown WorldTimer { get; private set; }
+        public bool GameOver { get; private set; }
 
         public int Score { get; private set; }
 
@@ -34,6 +35,7 @@ namespace LastDay
 
         private void Start()
         {
+            GameOver = false;
             instance = this;
             Audio = GetComponent<AudioSource>();
 
@@ -74,7 +76,8 @@ namespace LastDay
             // If timer is complete, reset world
             if (WorldTimer.IsFinished)
             {
-                ResetWorld();
+                GameOver = true;
+                //ResetWorld();
             }
 
             // Activate a deed for a number of random NPCs
@@ -101,12 +104,6 @@ namespace LastDay
             {
                 ObjectiveText = "Find a citzen<color=purple> in need </color>to start a <color=green>good deed</color>";
             }
-        }
-
-        // Reload the scene
-        private void ResetWorld()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void AddScore(int delta)

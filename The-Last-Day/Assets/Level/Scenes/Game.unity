@@ -1074,8 +1074,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 751648652}
     - target: {fileID: 155845406087817759, guid: b849b015f3cb00d43a2f4ed744ea3ce1, type: 3}
-      propertyPath: maxDeeds
-      value: 10
+      propertyPath: timeTillGameOver
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b849b015f3cb00d43a2f4ed744ea3ce1, type: 3}

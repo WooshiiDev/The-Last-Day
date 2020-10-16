@@ -38,7 +38,7 @@ namespace LastDay
         public void UpdateTimer(float deltaTime)
         {
             if (currentTime < endTime)
-                currentTime = startTime;
+                currentTime = endTime;
             else
                 currentTime -= deltaTime;
 

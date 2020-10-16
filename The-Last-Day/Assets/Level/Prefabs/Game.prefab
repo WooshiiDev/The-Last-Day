@@ -47,9 +47,12 @@ MonoBehaviour:
   timeTillGameOver: 300
   maxDeeds: 3
   currentDeeds: 0
+  npcs: []
   cityPrefab: {fileID: 8159030908618052413, guid: f779b4d28e9627342aefbea864914b66, type: 3}
-  playerPrefab: {fileID: 0}
+  playerPrefab: {fileID: 5867184732962792988, guid: 7cec884a184bdd341ad7555e41bfadbe, type: 3}
   eruptionClip: {fileID: 8300000, guid: 38c7f5579c178ac4285c3320a7db561a, type: 3}
+  currentMiniGame: {fileID: 0}
+  mainCam: {fileID: 0}
 --- !u!82 &1091968795
 AudioSource:
   m_ObjectHideFlags: 0

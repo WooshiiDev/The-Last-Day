@@ -1,4 +1,4 @@
-# Obitus
+# The Last Day
 Games Job Live 2020 Submission
 
 Created by the Featherskull Studios team

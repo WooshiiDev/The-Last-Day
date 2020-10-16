@@ -66,6 +66,7 @@ namespace LastDay
                 objectives[i].isCurrentObjective = false;
             }
             objectives[currentObjective].isCurrentObjective = true;
+            if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
         }
 
         private void CheckObjectiveGoal(Objective objective)
@@ -73,6 +74,7 @@ namespace LastDay
             switch (objective.goal)
             {
                 case objectiveType.Puzzle:
+                    if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = false;
                     objective.puzzleOverlay.gameObject.SetActive(true);
                     objective.puzzleOverlay.miniGame = this;
                     break;
@@ -99,9 +101,10 @@ namespace LastDay
             // Trigger Success Dialogue
             // Play Success Sound
             // Add Karma
-            //GameManager.instance.
+            GameManager.instance.AddScore(100);
             Debug.Log("Win Mini-Game");
             isGameActive = false;
+            if (player != null) player.GetComponent<LD.ControllerMotor>().canMove = true;
         }
 
         public void Lose()

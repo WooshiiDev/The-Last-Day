@@ -20,6 +20,7 @@ namespace LD
         private VisualEffect moveEffect;
 
         private LastDay.EntityAnimator entityAnimator;
+        public bool canMove = true;
 
         private void OnEnable()
             {
@@ -57,6 +58,8 @@ namespace LD
         /// </summary>
         public void MoveToPoint(InputAction.CallbackContext ctx)
             {
+            if (canMove == false) return;
+
             Vector3 mousePosition = Input.mouse.position.ReadValue ();
             Ray ray = Camera.main.ScreenPointToRay (mousePosition);
 
@@ -66,8 +69,7 @@ namespace LD
                 // Spawn Visual Effect to indicate move location
                 if (moveEffect == null) moveEffect = Instantiate(effect, hit.point, Quaternion.identity);
                 else moveEffect.transform.position = hit.point;
-            }
-                
+            }             
             }
 
         public void OnMove()

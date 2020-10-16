@@ -2,10 +2,9 @@
 
 namespace LastDay
 {
-    public class jigsawPuzzle : MonoBehaviour
+    public class jigsawPuzzle : Puzzle
     {
         [SerializeField] jigSawSlot[] jigSawSlots = null;
-        public MiniGame miniGame = null;
         void Update()
         {
             for (int i = 0; i < jigSawSlots.Length - 1; i++)

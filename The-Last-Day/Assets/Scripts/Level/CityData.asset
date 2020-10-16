@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 1757571844574840037, guid: 54af6b0dc53958543954e850a8299288, type: 3}
   minigames:
   - {fileID: 1692429592917175568, guid: bb9d83f2691bb4448b72a794026b37d8, type: 3}
+  - {fileID: 750213661035471094, guid: 8fc175d7c39e52b4eae94b7751c3041a, type: 3}
   - {fileID: 3177507478559545318, guid: 24b35ab06b1d67d498a298043aa65d4e, type: 3}
   collectableObjects:
   - {fileID: 7534894337184994309, guid: 5ecfdec1c4b9ac848b01c18472f51a23, type: 3}

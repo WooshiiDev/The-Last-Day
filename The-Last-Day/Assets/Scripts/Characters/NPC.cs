@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace LastDay
 {
@@ -26,7 +24,7 @@ namespace LastDay
         private void LateUpdate()
         {
             // Have UI point towards the camera
-            if (game.mainCam != null) deedMarker.transform.LookAt(game.mainCam.transform); 
+            if (game.mainCam != null) deedMarker.transform.LookAt(game.mainCam.cam.transform); 
         }
 
         public void GenerateDeed(GameObject randomMiniGame)

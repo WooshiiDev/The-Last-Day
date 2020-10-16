@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace LastDay
 {
@@ -20,6 +21,7 @@ namespace LastDay
         public GameObject City { get; private set; }
         public GameObject Player { get; private set; }
         public Countdown WorldTimer { get; private set; }
+        public int Score { get; private set; }
 
         public Director.CameraFreeLook mainCam;
 
@@ -79,6 +81,11 @@ namespace LastDay
         private void ResetWorld()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void AddScore(int delta)
+        {
+            Score += delta;
         }
     }
 }

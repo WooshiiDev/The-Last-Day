@@ -6,12 +6,14 @@ namespace LastDay
 {
     public class NPC : MonoBehaviour
     {
+        private GameManager game;
         [SerializeField] private GameObject deedMarker = null;
         public bool HasDeed { get; private set; }
 
         private void Start()
         {
-            GameManager.instance.npcs.Add(this);
+            game = GameManager.instance;
+            game.npcs.Add(this);
         }
 
         private void Update()
@@ -23,7 +25,8 @@ namespace LastDay
         private void LateUpdate()
         {
             // Have UI point towards the camera
-            //if (GameManager.instance.Player.transform) deedMarker.transform.LookAt(GameManager.instance.Player.transform); //TODO Get the camera
+            if (game.Player.transform != null) 
+                deedMarker.transform.LookAt(game.Player.transform); //TODO Get the camera
         }
 
         public void ActivateDeed()
@@ -34,7 +37,7 @@ namespace LastDay
         public void DeactivateDeed()
         {
             HasDeed = false;
-            GameManager.instance.currentDeeds--;
+            game.currentDeeds--;
         }
     }
 }

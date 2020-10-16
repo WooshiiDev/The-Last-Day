@@ -100,7 +100,7 @@ namespace LastDay
                     objective.objectsToCollect = new GameObject[objective.numToCollect];
                     for (int i = 0; i < objective.numToCollect; i++)
                     {
-                        GameObject collectObject = Instantiate(objective.objectToCollect, CityGenerator.NavMeshLocation(20, transform), Quaternion.identity);
+                        GameObject collectObject = Instantiate(objective.objectToCollect, CityGenerator.NavMeshLocation(20, transform), Quaternion.identity,this.transform);
                         objective.objectsToCollect[i] = collectObject;
                     }
                     break;

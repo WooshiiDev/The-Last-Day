@@ -25,8 +25,7 @@ namespace LastDay
         private void LateUpdate()
         {
             // Have UI point towards the camera
-            if (game.Player.transform != null) 
-                deedMarker.transform.LookAt(game.Player.transform); //TODO Get the camera
+            if (game.mainCam != null) deedMarker.transform.LookAt(game.mainCam.transform); 
         }
 
         public void ActivateDeed()

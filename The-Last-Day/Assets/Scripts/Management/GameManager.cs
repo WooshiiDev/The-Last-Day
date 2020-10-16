@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 namespace LastDay
 {
@@ -69,6 +70,10 @@ namespace LastDay
             WorldTimer.UpdateTimer(Time.deltaTime);
             City.GetComponent<AudioSource>().volume = GameOver ? 0 : 0.2f;
 
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
             // Play volcano explosion sound
             if (!Audio.isPlaying && WorldTimer.CurrentTime <= 10)
             {

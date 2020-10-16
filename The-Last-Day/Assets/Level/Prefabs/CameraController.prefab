@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6665711839921712186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6665711839921712187}
+  - component: {fileID: 6665711839921712133}
+  - component: {fileID: 6665711839921712134}
+  - component: {fileID: 6665711839921712132}
+  m_Layer: 0
+  m_Name: CameraController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6665711839921712187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665711839921712186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.721449, y: 3.505497, z: 0.8267288}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6665711839921712133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665711839921712186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c29695e37097e24aa71f07a27912169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6665711839921712134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665711839921712186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac67eadb4675d1c4da6cbb51e9e372e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebug: 1
+  searchForAttributes: 1
+  defaultCatergories: []
+--- !u!114 &6665711839921712132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6665711839921712186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926f34405ca39de49aa5785180d1b04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState:
+    stateName: main
+    rotation: 3
+    canMove: 1
+    canRotate: 1
+    originOffset: {x: 0, y: 0, z: 0}
+    radius: 20
+    targetFOV: 60
+    fovDamp: 0.5
+  offset: {x: 0, y: 0, z: 0}
+  radius: 7
+  fovVelocity: 0
+  settings:
+    fov: 60
+    clipNear: 0.1
+    clipFar: 5000
+    viewportRect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 1
+      height: 1
+  moveDamp: 0.1
+  rotationDamp: 60
+  canRotate: 1
+  canMove: 1
+  follow: {fileID: 0}
+  lookAt: {fileID: 0}
+  displacement: {x: 0, y: 0, z: 0}
+  transposeVelocity: {x: 0, y: 0, z: 0}
+  components: []
+  inputData:
+    yaw: 0
+    pitch: 0
+    isInvertedX: 0
+    isInvertedY: 0
+    mouseX: Mouse X
+    mouseY: Mouse Y
+    mouseSens: {x: 1, y: 1}
+  wallPadding: 0
+  radiusDamp: 0
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 256
+  solveDelay: 0

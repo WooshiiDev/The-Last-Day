@@ -1,0 +1,15 @@
+{
+    "name": "CameraDirector",
+    "references": [
+        "GUID:207eb2f68287d714799e483b259107f0"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

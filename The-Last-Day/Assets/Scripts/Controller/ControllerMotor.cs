@@ -17,6 +17,11 @@ namespace LD
 
         private VisualEffect effect;
 
+        private VisualEffect moveEffect;
+
+        private LastDay.EntityAnimator entityAnimator;
+        public bool canMove = true;
+
         private void OnEnable()
             {
             Input = GetComponent<ControllerInput> ();
@@ -24,7 +29,10 @@ namespace LD
 
             effect = GetComponentInChildren<VisualEffect> ();
 
+           entityAnimator = GetComponent<LastDay.EntityAnimator>();
+
             Input.AddClickListener (MoveToPoint);
+
             }
 
         private void Awake()
@@ -37,8 +45,12 @@ namespace LD
 
         public void Update()
             {
+            effect.enabled = transform.hasChanged;
+
             if (transform.hasChanged)
                 OnMove ();
+
+            entityAnimator.SetAnimationBool("moving",Agent.remainingDistance >.4f);
             }
 
         /// <summary>
@@ -46,11 +58,18 @@ namespace LD
         /// </summary>
         public void MoveToPoint(InputAction.CallbackContext ctx)
             {
+            if (canMove == false) return;
+
             Vector3 mousePosition = Input.mouse.position.ReadValue ();
             Ray ray = Camera.main.ScreenPointToRay (mousePosition);
 
             if (Physics.Raycast(ray, out RaycastHit hit))
-                Agent.SetDestination (hit.point);
+            {
+                Agent.SetDestination(hit.point);
+                // Spawn Visual Effect to indicate move location
+                if (moveEffect == null) moveEffect = Instantiate(effect, hit.point, Quaternion.identity);
+                else moveEffect.transform.position = hit.point;
+            }             
             }
 
         public void OnMove()

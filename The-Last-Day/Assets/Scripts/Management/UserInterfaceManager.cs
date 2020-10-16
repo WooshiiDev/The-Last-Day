@@ -8,15 +8,24 @@ namespace LastDay
 {
     public class UserInterfaceManager : MonoBehaviour
     {
-        public TextMeshProUGUI timerDisplay;
+        public TextMeshProUGUI timerDisplay, scoreDisplay;
         public Image endFadeImage;
+        private GameManager game;
+
+        private void Start()
+        {
+            game = GameManager.instance;
+        }
 
         // Update is called once per frame
         void Update()
         {
-            timerDisplay.text = GameManager.instance.WorldTimer.GetTime();
+            // Get and display time remaining
+            timerDisplay.text = game.WorldTimer.GetTime();
+            // Get and display score
+            scoreDisplay.text = game.Score.ToString();
 
-            if (GameManager.instance.WorldTimer.CurrentTime <= 5)
+            if (game.WorldTimer.CurrentTime <= 5)
                 StartCoroutine(EndFade(0.2f));
         }
 

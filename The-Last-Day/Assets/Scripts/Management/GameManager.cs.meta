@@ -3,7 +3,10 @@ guid: eda1721641fb5614b9c75b4ac0a8947f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cityPrefab: {fileID: 8159030908618052413, guid: f779b4d28e9627342aefbea864914b66, type: 3}
+  - playerPrefab: {fileID: 4292356980620016883, guid: 83893fd9039355f46bd97f8bb68b9587, type: 3}
+  - eruptionClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
